@@ -1,5 +1,7 @@
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import type { ClientOpts } from 'redis';
+import * as redisStore from 'cache-manager-redis-store';
 import { MongooseModule } from '@nestjs/mongoose';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
@@ -13,6 +15,12 @@ import { EventsModule } from './events/events.module';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.mongoDB_URI),
+    CacheModule.register<ClientOpts>({
+      store: redisStore,
+      host: process.env.redis_URI,
+      port: process.env.redis_PORT,
+      password: process.env.redis_PASSWORD
+    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
