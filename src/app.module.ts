@@ -7,6 +7,7 @@ import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { createFalse } from '@ts-morph/common/lib/typescript';
 import { CreatorsModule } from './creators/creators.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { CreatorsModule } from './creators/creators.module';
       cors: true,
     }),
     CreatorsModule,
+    EventsModule,
   ]
 })
 export class AppModule {}
