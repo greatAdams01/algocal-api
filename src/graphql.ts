@@ -9,7 +9,7 @@
 /* eslint-disable */
 
 export class CreatorInput {
-    creatorname: string;
+    creatorName: string;
     email: string;
     description: string;
     website: string;
@@ -17,7 +17,7 @@ export class CreatorInput {
 
 export class Creator {
     _id?: Nullable<string>;
-    creatorname: string;
+    creatorName: string;
     email: string;
     description: string;
     website: string;

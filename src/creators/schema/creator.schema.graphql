@@ -1,6 +1,6 @@
 type Creator {
   _id: ID
-  creatorname: String!
+  creatorName: String!
   email: String!
   description: String!
   website: String!
@@ -13,7 +13,7 @@ type Query {
 
 
 input CreatorInput {
-  creatorname: String!
+  creatorName: String!
   email: String!
   description: String!
   website: String!
