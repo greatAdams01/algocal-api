@@ -1,0 +1,26 @@
+type Creator {
+  _id: ID
+  creatorname: String!
+  email: String!
+  description: String!
+  website: String!
+}
+
+
+type Query {
+  creators: [Creator!]!
+}
+
+
+input CreatorInput {
+  creatorname: String!
+  email: String!
+  description: String!
+  website: String!
+}
+
+
+
+type Mutation {
+  addcreator(Inputs: CreatorInput!): Creator!
+}
