@@ -9,4 +9,5 @@ type Creator {
 
 type Query {
   creators: [Creator!]!
+  creator: Creator!
 }

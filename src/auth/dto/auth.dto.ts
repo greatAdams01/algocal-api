@@ -1,5 +1,5 @@
 
 export class AuthData {
-  userId: string
+  creatorId: string
   token: string
 }

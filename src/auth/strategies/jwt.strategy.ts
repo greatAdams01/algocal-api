@@ -20,7 +20,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate(payload: { creatorId: string }) {
     const creator = await this.creatorModel.findById(payload.creatorId).select('-password');
-
+    // console.log(creator)
     return creator;
   }
 }

@@ -14,6 +14,6 @@ export class GQLoginGuard extends AuthGuard('jwt') {
 export const CurrentCreator = createParamDecorator(
   (data: unknown, context: ExecutionContext) => {
     const ctx = GqlExecutionContext.create(context);
-    return ctx.getContext().req.creator;
+    return ctx.getContext().req.user;
   },
 );

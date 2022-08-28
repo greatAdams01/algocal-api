@@ -17,7 +17,7 @@ export class CreatorInput {
 }
 
 export class AuthData {
-    userId: string;
+    creatorId: string;
     token: string;
 }
 
@@ -25,6 +25,8 @@ export abstract class IQuery {
     abstract login(email: string, password: string): AuthData | Promise<AuthData>;
 
     abstract creators(): Creator[] | Promise<Creator[]>;
+
+    abstract creator(): Creator | Promise<Creator>;
 }
 
 export abstract class IMutation {

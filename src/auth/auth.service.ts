@@ -29,10 +29,10 @@ export class AuthService {
       throw new AuthenticationError('Email or Password invaild')
     }
 
-    const token = await this.jwtService.sign({ userId: creator._id })
+    const token = await this.jwtService.sign({ creatorId: creator._id })
 
     return {
-      userId: creator._id,
+      creatorId: creator._id,
       token: token
     }
   }
