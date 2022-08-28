@@ -10,6 +10,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import { createFalse } from '@ts-morph/common/lib/typescript';
 import { CreatorsModule } from './creators/creators.module';
 import { EventsModule } from './events/events.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { EventsModule } from './events/events.module';
     }),
     CreatorsModule,
     EventsModule,
+    AuthModule,
   ]
 })
 export class AppModule {}

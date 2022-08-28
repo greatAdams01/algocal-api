@@ -10,9 +10,14 @@
 
 export class CreatorInput {
     creatorName: string;
+    password: string;
     email: string;
     description: string;
     website: string;
+}
+
+export abstract class IMutation {
+    abstract addcreator(Inputs: CreatorInput): Creator | Promise<Creator>;
 }
 
 export class Creator {
@@ -25,10 +30,6 @@ export class Creator {
 
 export abstract class IQuery {
     abstract creators(): Creator[] | Promise<Creator[]>;
-}
-
-export abstract class IMutation {
-    abstract addcreator(Inputs: CreatorInput): Creator | Promise<Creator>;
 }
 
 type Nullable<T> = T | null;

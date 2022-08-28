@@ -12,6 +12,8 @@ export class Creator {
   @Prop({ unique: true, required: true })
   email: string;
   @Prop({ required: true })
+  password: string;
+  @Prop({ required: true })
   description: string;
   @Prop({ required: true, default: 'Fill in' })
   website: string;

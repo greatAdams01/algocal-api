@@ -10,17 +10,3 @@ type Creator {
 type Query {
   creators: [Creator!]!
 }
-
-
-input CreatorInput {
-  creatorName: String!
-  email: String!
-  description: String!
-  website: String!
-}
-
-
-
-type Mutation {
-  addcreator(Inputs: CreatorInput!): Creator!
-}

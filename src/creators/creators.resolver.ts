@@ -12,9 +12,4 @@ export class CreatorsResolver {
     return this.creatorsService.getCreators()
   }
 
-  @Mutation()
-  addcreator(@Args() creatorInput): Promise<CreatorDocument> {
-    const { Inputs } = creatorInput
-    return this.creatorsService.addCreator(Inputs)
-  }
 }

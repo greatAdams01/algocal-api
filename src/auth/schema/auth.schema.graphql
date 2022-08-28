@@ -1,0 +1,15 @@
+
+
+input CreatorInput {
+  creatorName: String!
+  password: String!
+  email: String!
+  description: String!
+  website: String!
+}
+
+
+
+type Mutation {
+  addcreator(Inputs: CreatorInput!): Creator!
+}
