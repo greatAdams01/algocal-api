@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { AuthenticationError } from 'apollo-server-express';
+import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { Creator, CreatorDocument } from 'src/creators/schema/creator';
 import { CreatorDTO } from 'src/creators/schema/dto/creator.dto';
@@ -12,6 +13,7 @@ import { AuthData } from './dto/auth.dto';
 export class AuthService {
   constructor(
     @InjectModel(Creator.name) private readonly creatorModel: Model<CreatorDocument>,
+    private jwtService: JwtService,
   ){}
 
 
@@ -27,9 +29,11 @@ export class AuthService {
       throw new AuthenticationError('Email or Password invaild')
     }
 
+    const token = await this.jwtService.sign({ userId: creator._id })
+
     return {
       userId: creator._id,
-      token: 'test'
+      token: token
     }
   }
 

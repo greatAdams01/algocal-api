@@ -11,6 +11,7 @@ import { createFalse } from '@ts-morph/common/lib/typescript';
 import { CreatorsModule } from './creators/creators.module';
 import { EventsModule } from './events/events.module';
 import { AuthModule } from './auth/auth.module';
+import config from './util/config';
 
 @Module({
   imports: [
