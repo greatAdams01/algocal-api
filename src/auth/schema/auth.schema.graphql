@@ -1,4 +1,12 @@
+type AuthData {
+  userId: ID!
+  token: String!
+}
 
+
+type Query {
+  login(email: String!, password: String!): AuthData!
+}
 
 input CreatorInput {
   creatorName: String!

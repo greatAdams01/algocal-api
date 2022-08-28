@@ -1,7 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type CreatorDocument =  & Document;
+// export type CreatorDocument =  & Document;
+export type CreatorDocument = Creator &
+  Document & {
+    _id: any;
+    _doc: any;
+  };
 
 @Schema({
   timestamps: true

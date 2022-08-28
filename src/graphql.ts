@@ -16,6 +16,17 @@ export class CreatorInput {
     website: string;
 }
 
+export class AuthData {
+    userId: string;
+    token: string;
+}
+
+export abstract class IQuery {
+    abstract login(email: string, password: string): AuthData | Promise<AuthData>;
+
+    abstract creators(): Creator[] | Promise<Creator[]>;
+}
+
 export abstract class IMutation {
     abstract addcreator(Inputs: CreatorInput): Creator | Promise<Creator>;
 }
@@ -26,10 +37,6 @@ export class Creator {
     email: string;
     description: string;
     website: string;
-}
-
-export abstract class IQuery {
-    abstract creators(): Creator[] | Promise<Creator[]>;
 }
 
 type Nullable<T> = T | null;

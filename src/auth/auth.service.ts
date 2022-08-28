@@ -1,16 +1,37 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { AuthenticationError } from 'apollo-server-express';
 import { Model } from 'mongoose';
 import { Creator, CreatorDocument } from 'src/creators/schema/creator';
 import { CreatorDTO } from 'src/creators/schema/dto/creator.dto';
-import { genPassHash } from 'src/util/hash';
+import { genPassHash, comparePass } from 'src/util/hash';
 import { isEmail, strPass } from 'src/util/util';
+import { AuthData } from './dto/auth.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(Creator.name) private readonly creatorModel: Model<CreatorDocument>,
   ){}
+
+
+  async login(email:string, password: string): Promise<AuthData> {
+
+    const creator: CreatorDocument = await this.creatorModel.findOne({ email: email })
+    if (!creator) {
+      throw new AuthenticationError('Email or Password invaild')
+    }
+    const isPass = await comparePass(password, creator.password)
+
+    if (!isPass) {
+      throw new AuthenticationError('Email or Password invaild')
+    }
+
+    return {
+      userId: creator._id,
+      token: 'test'
+    }
+  }
 
   async addCreator(data: CreatorDTO): Promise<CreatorDocument> {
     if(!isEmail(data.email)) throw new BadRequestException(`Use a valid email address`)
@@ -25,7 +46,6 @@ export class AuthService {
       throw new BadRequestException(`Add a strong Password`)
     }
     const hash = await genPassHash(data.password)
-    console.log(hash)
     const payload = {
       creatorName: data.creatorName,
       email: data.email,
