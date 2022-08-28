@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Creator, CreatorDocument } from 'src/creators/schema/creator';
 import { CreatorDTO } from 'src/creators/schema/dto/creator.dto';
+import { genPassHash } from 'src/util/hash';
 import { isEmail, strPass } from 'src/util/util';
 
 @Injectable()
@@ -23,9 +24,18 @@ export class AuthService {
     if (!data.password || !strPass(data.password)) {
       throw new BadRequestException(`Add a strong Password`)
     }
+    const hash = await genPassHash(data.password)
+    console.log(hash)
+    const payload = {
+      creatorName: data.creatorName,
+      email: data.email,
+      description: data.description,
+      website: data.website,
+      password: hash
+    }
     try {
       const creator = await this.creatorModel.create(
-        data
+        payload
       )
       return creator
     } catch (error) {
