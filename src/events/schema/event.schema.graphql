@@ -1,0 +1,35 @@
+type Event {
+  _id: ID!
+  title: String!
+  date: String!
+  time: String!
+  description: String!
+  subDescription: String!
+  host: ID!
+  followers: Int!
+  reactions: Int!
+  venue: String!
+  category: String!
+  type: String!
+  link: String!
+}
+
+type Query {
+  events: [Event!]!
+}
+
+input EventInput {
+  title: String!
+  date: String!
+  time: String!
+  description: String!
+  subDescription: String!
+  venue: String!
+  category: String!
+  type: String!
+  link: String!
+}
+
+type Mutation {
+  createEvent(inputs: EventInput!): Event!
+}

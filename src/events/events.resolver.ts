@@ -1,7 +1,21 @@
-import { Resolver } from '@nestjs/graphql';
+import { UseGuards } from '@nestjs/common';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { CurrentCreator, GQLoginGuard } from 'src/auth/guard/graphql.guard';
 import { EventsService } from './events.service';
+import { EventDocument } from './schema/event.schema';
 
 @Resolver('Event')
 export class EventsResolver {
   constructor(private readonly eventsService: EventsService) {}
+
+  @Query()
+  events(): Promise<EventDocument[]> {
+    return this.eventsService.events()
+  }
+
+  @UseGuards(GQLoginGuard)
+  @Mutation()
+  createEvent(@Args() { inputs }, @CurrentCreator() creator) {
+    return this.eventsService.createEvent(inputs, creator._id)
+  }
 }

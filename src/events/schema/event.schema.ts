@@ -1,0 +1,52 @@
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document, Types } from 'mongoose';
+import { CreatorDocument } from 'src/creators/schema/creator';
+import { category, eventType } from './event.dto';
+
+
+export type EventDocument = Event &
+  Document & {
+    _id: any;
+    _doc: any;
+  };
+
+  
+  @Schema({
+    timestamps: true
+  })
+  export class Event {
+    @Prop({ required: true })
+    title: string;
+    @Prop({ required: true })
+    data: string;
+    @Prop({ required: true })
+    time: string;
+    @Prop({ required: true })
+    description: string;
+    @Prop({ required: true })
+    subDescription: string;
+    @Prop({ required: true, type: [{ type: Types.ObjectId, ref: 'Creator', autopopulate: true }] })
+    host: CreatorDocument;
+    @Prop({ required: true, default: 0 })
+    followers: number;
+    @Prop({ required: true, default: 0 })
+    reactions: number;
+    @Prop({ required: true })
+    venue: string;
+    @Prop({ 
+      required: true,
+      enum: category,
+      default: category.Devents
+     })
+    category: string;
+    @Prop({ 
+      required: true,
+      enum: eventType,
+      default: eventType.Online
+     })
+    type: string;
+    @Prop({ required: true })
+    link: string;
+  }
+
+  export const EventSchema = SchemaFactory.createForClass(Event);
