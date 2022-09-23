@@ -12,6 +12,8 @@ import { CreatorsModule } from './creators/creators.module';
 import { EventsModule } from './events/events.module';
 import { AuthModule } from './auth/auth.module';
 import config from './util/config';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 
 @Module({
   imports: [
@@ -40,6 +42,12 @@ import config from './util/config';
     CreatorsModule,
     EventsModule,
     AuthModule,
+  ],
+  controllers: [
+    AppController
+  ],
+  providers: [
+    AppService
   ]
 })
 export class AppModule {}
