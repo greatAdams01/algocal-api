@@ -12,6 +12,8 @@ type Event {
   category: String!
   type: String!
   link: String!
+  createdAt: String!
+  updatedAt: String!
 }
 
 type Query {

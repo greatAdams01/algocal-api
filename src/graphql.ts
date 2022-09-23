@@ -71,6 +71,8 @@ export class Event {
     category: string;
     type: string;
     link: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 type Nullable<T> = T | null;
