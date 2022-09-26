@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { CreatorDocument } from 'src/creators/schema/creator';
+import { CreatorDocument } from 'src/creators/schema/creator.schema';
 import { category, eventType } from './event.dto';
 
 

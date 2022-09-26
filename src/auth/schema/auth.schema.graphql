@@ -9,7 +9,7 @@ type Query {
 }
 
 input CreatorInput {
-  creatorName: String!
+  name: String!
   password: String!
   email: String!
   description: String!

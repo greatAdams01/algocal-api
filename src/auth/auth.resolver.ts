@@ -1,5 +1,5 @@
 import { Resolver, Mutation, Args, Query } from '@nestjs/graphql';
-import { Creator, CreatorSchema, CreatorDocument } from 'src/creators/schema/creator';
+import { Creator, CreatorSchema, CreatorDocument } from 'src/creators/schema/creator.schema';
 import { AuthService } from './auth.service';
 
 @Resolver('Auth')

@@ -4,7 +4,7 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { AuthResolver } from './auth.resolver';
-import { Creator, CreatorSchema } from 'src/creators/schema/creator';
+import { Creator, CreatorSchema } from 'src/creators/schema/creator.schema';
 import config from 'src/util/config';
 import { JwtStrategy } from './strategies/jwt.strategy';
 

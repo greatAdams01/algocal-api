@@ -9,7 +9,7 @@
 /* eslint-disable */
 
 export class CreatorInput {
-    creatorName: string;
+    name: string;
     password: string;
     email: string;
     description: string;

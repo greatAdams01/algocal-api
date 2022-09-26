@@ -13,7 +13,7 @@ export type CreatorDocument = Creator &
 })
 export class Creator {
   @Prop({ unique: true, required: true })
-  creatorName: string;
+  name: string;
   @Prop({ unique: true, required: true })
   email: string;
   @Prop({ required: true })

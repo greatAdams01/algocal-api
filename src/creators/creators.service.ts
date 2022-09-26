@@ -1,7 +1,7 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Creator, CreatorDocument } from './schema/creator';
+import { Creator, CreatorDocument } from './schema/creator.schema';
 import { CreatorDTO } from './schema/dto/creator.dto';
 import { isEmail } from 'src/util/util';
 

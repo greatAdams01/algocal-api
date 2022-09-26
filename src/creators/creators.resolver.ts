@@ -2,7 +2,7 @@ import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { CurrentCreator, GQLoginGuard } from 'src/auth/guard/graphql.guard';
 import { CreatorsService } from './creators.service';
-import { CreatorDocument } from './schema/creator';
+import { CreatorDocument } from './schema/creator.schema';
 import { CreatorDTO } from './schema/dto/creator.dto';
 
 @Resolver('Creator')

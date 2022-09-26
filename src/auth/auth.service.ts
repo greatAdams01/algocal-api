@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { AuthenticationError } from 'apollo-server-express';
 import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
-import { Creator, CreatorDocument } from 'src/creators/schema/creator';
+import { Creator, CreatorDocument } from 'src/creators/schema/creator.schema';
 import { CreatorDTO } from 'src/creators/schema/dto/creator.dto';
 import { genPassHash, comparePass } from 'src/util/hash';
 import { isEmail, strPass } from 'src/util/util';
