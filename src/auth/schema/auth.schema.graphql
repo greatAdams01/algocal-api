@@ -12,12 +12,10 @@ input CreatorInput {
   name: String!
   password: String!
   email: String!
-  description: String!
-  website: String!
 }
 
 
 
 type Mutation {
-  addcreator(Inputs: CreatorInput!): Creator!
+  register(Inputs: CreatorInput!): Creator!
 }

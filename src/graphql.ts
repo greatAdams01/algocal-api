@@ -12,8 +12,6 @@ export class CreatorInput {
     name: string;
     password: string;
     email: string;
-    description: string;
-    website: string;
 }
 
 export class EventInput {
@@ -44,16 +42,16 @@ export abstract class IQuery {
 }
 
 export abstract class IMutation {
-    abstract addcreator(Inputs: CreatorInput): Creator | Promise<Creator>;
+    abstract register(Inputs: CreatorInput): Creator | Promise<Creator>;
 
     abstract createEvent(inputs: EventInput): Event | Promise<Event>;
 }
 
 export class Creator {
     _id?: Nullable<string>;
-    creatorName: string;
+    name: string;
     email: string;
-    description: string;
+    about: string;
     website: string;
 }
 

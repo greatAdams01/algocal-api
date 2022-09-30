@@ -12,7 +12,7 @@ export class AuthResolver {
   }
 
   @Mutation()
-  addcreator(@Args() creatorInput): Promise<CreatorDocument> {
+  register(@Args() creatorInput): Promise<CreatorDocument> {
     const { Inputs } = creatorInput
     return this.authService.addCreator(Inputs)
   }

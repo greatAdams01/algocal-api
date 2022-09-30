@@ -1,8 +1,8 @@
 type Creator {
   _id: ID
-  creatorName: String!
+  name: String!
   email: String!
-  description: String!
+  about: String!
   website: String!
 }
 

@@ -43,9 +43,6 @@ export class AuthService {
     if(creatorNameExist) throw new BadRequestException(`Creatorname already exists`)
     const userEmailExist = await this.creatorModel.findOne({ email: data.email })
     if(userEmailExist) throw new BadRequestException(`Email exists`)
-    if(!data.description || !data.website) {
-      throw new BadRequestException(`Add a description and website`)
-    }
     if (!data.password || !strPass(data.password)) {
       throw new BadRequestException(`Add a strong Password`)
     }
@@ -53,8 +50,6 @@ export class AuthService {
     const payload = {
       creatorName: data.creatorName,
       email: data.email,
-      description: data.description,
-      website: data.website,
       password: hash
     }
     try {

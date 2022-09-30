@@ -18,8 +18,8 @@ export class Creator {
   email: string;
   @Prop({ required: true })
   password: string;
-  @Prop({ required: true })
-  description: string;
+  @Prop({ required: true, default: 'Fill in' })
+  about: string;
   @Prop({ required: true, default: 'Fill in' })
   website: string;
 }
