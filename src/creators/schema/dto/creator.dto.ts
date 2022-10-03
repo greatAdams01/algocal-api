@@ -1,8 +1,6 @@
 
 export class CreatorDTO {
-  creatorName: string
+  name: string
   email: string
-  description: string
-  website: string
   password: string
 }

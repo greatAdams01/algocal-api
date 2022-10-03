@@ -24,7 +24,9 @@ export type EventDocument = Event &
     @Prop({ required: true })
     description: string;
     @Prop({ required: true })
-    subDescription: string;
+    organizer: string;
+    // @Prop({ required: true })
+    // subDescription: string;
     @Prop({ required: true, type: [{ type: Types.ObjectId, ref: 'Creator', autopopulate: true }] })
     host: CreatorDocument;
     @Prop({ required: true, default: 0 })
@@ -39,12 +41,6 @@ export type EventDocument = Event &
       default: category.Devents
      })
     category: string;
-    @Prop({ 
-      required: true,
-      enum: eventType,
-      default: eventType.Online
-     })
-    type: string;
     @Prop({ required: true })
     link: string;
   }

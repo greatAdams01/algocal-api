@@ -1,6 +1,7 @@
 export enum category {
   Hackaton = 'Hackaton',
-  Devents = 'Devents'
+  Devents = 'Devents',
+  Spaces = 'Spaces'
 }
 
 export enum eventType {

@@ -4,10 +4,6 @@ type AuthData {
 }
 
 
-type Query {
-  login(email: String!, password: String!): AuthData!
-}
-
 input CreatorInput {
   name: String!
   password: String!
@@ -17,5 +13,10 @@ input CreatorInput {
 
 
 type Mutation {
-  register(Inputs: CreatorInput!): Creator!
+  login(email: String!, password: String!): AuthData!
+  signup (
+    name: String!
+    password: String!
+    email: String!
+  ): Creator!
 }

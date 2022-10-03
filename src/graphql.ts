@@ -19,10 +19,8 @@ export class EventInput {
     date: string;
     time: string;
     description: string;
-    subDescription: string;
     venue: string;
     category: string;
-    type: string;
     link: string;
 }
 
@@ -31,18 +29,10 @@ export class AuthData {
     token: string;
 }
 
-export abstract class IQuery {
+export abstract class IMutation {
     abstract login(email: string, password: string): AuthData | Promise<AuthData>;
 
-    abstract creators(): Creator[] | Promise<Creator[]>;
-
-    abstract creator(): Creator | Promise<Creator>;
-
-    abstract events(): Event[] | Promise<Event[]>;
-}
-
-export abstract class IMutation {
-    abstract register(Inputs: CreatorInput): Creator | Promise<Creator>;
+    abstract signup(name: string, password: string, email: string): Creator | Promise<Creator>;
 
     abstract createEvent(inputs: EventInput): Event | Promise<Event>;
 }
@@ -55,19 +45,26 @@ export class Creator {
     website: string;
 }
 
+export abstract class IQuery {
+    abstract creators(): Creator[] | Promise<Creator[]>;
+
+    abstract creator(): Creator | Promise<Creator>;
+
+    abstract events(): Event[] | Promise<Event[]>;
+}
+
 export class Event {
     _id: string;
     title: string;
     date: string;
     time: string;
     description: string;
-    subDescription: string;
+    organizer: string;
     host: string;
     followers: number;
     reactions: number;
     venue: string;
     category: string;
-    type: string;
     link: string;
     createdAt: string;
     updatedAt: string;

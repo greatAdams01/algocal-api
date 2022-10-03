@@ -4,13 +4,12 @@ type Event {
   date: String!
   time: String!
   description: String!
-  subDescription: String!
+  organizer: String!
   host: ID!
   followers: Int!
   reactions: Int!
   venue: String!
   category: String!
-  type: String!
   link: String!
   createdAt: String!
   updatedAt: String!
@@ -25,10 +24,8 @@ input EventInput {
   date: String!
   time: String!
   description: String!
-  subDescription: String!
   venue: String!
   category: String!
-  type: String!
   link: String!
 }
 
