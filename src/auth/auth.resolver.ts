@@ -13,7 +13,6 @@ export class AuthResolver {
 
   @Mutation()
   signup(@Args() creatorInput): Promise<CreatorDocument> {
-    const { Inputs } = creatorInput
-    return this.authService.addCreator(Inputs)
+    return this.authService.addCreator(creatorInput)
   }
 }

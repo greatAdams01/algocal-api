@@ -38,15 +38,22 @@ export class AuthService {
   }
 
   async addCreator(data: CreatorDTO): Promise<CreatorDocument> {
-    console.log(data)
+    // Check if valid email
     if(!isEmail(data.email)) throw new BadRequestException(`Use a valid email address`)
+
+    // Check if name exist
     const nameExist = await this.creatorModel.findOne({ name: data.name })
-    if(nameExist) throw new BadRequestException(`name already exists`)
+    if(nameExist) throw new BadRequestException(`Name already exists`)
+
+    // Check if email exists
     const userEmailExist = await this.creatorModel.findOne({ email: data.email })
     if(userEmailExist) throw new BadRequestException(`Email exists`)
+
+    // Check if password is strong enogh
     if (!data.password || !strPass(data.password)) {
       throw new BadRequestException(`Add numbers and special characters`)
     }
+
     const hash = await genPassHash(data.password)
     const payload = {
       name: data.name,
