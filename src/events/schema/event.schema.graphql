@@ -5,7 +5,7 @@ type Event {
   time: String!
   description: String!
   organizer: String!
-  images: String!
+  image: String!
   host: ID!
   followers: Int!
   reactions: Int!
