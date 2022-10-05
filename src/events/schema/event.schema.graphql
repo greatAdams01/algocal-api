@@ -5,6 +5,7 @@ type Event {
   time: String!
   description: String!
   organizer: String!
+  images: String!
   host: ID!
   followers: Int!
   reactions: Int!
@@ -30,5 +31,12 @@ input EventInput {
 }
 
 type Mutation {
-  createEvent(inputs: EventInput!): Event!
+  createEvent(title: String!
+  date: String!
+  time: String!
+  organizer: String!
+  description: String!
+  venue: String!
+  category: String!
+  link: String!): Event!
 }

@@ -15,7 +15,7 @@ export class EventsResolver {
 
   @UseGuards(GQLoginGuard)
   @Mutation()
-  createEvent(@Args() { inputs }, @CurrentCreator() creator) {
-    return this.eventsService.createEvent(inputs, creator._id)
+  createEvent(@Args() payload, @CurrentCreator() creator) {
+    return this.eventsService.createEvent(payload, creator._id)
   }
 }

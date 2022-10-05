@@ -25,8 +25,8 @@ export type EventDocument = Event &
     description: string;
     @Prop({ required: true })
     organizer: string;
-    // @Prop({ required: true })
-    // subDescription: string;
+    @Prop({ required: true , default: 'https://images.prismic.io/algorandcom/bd152374-1cdf-4949-a6f2-226975e153d6_1.jpg?auto=compress%2Cformat&rect=0%2C0%2C1231%2C143&w=1200&h=139'})
+    image: string;
     @Prop({ required: true, type: [{ type: Types.ObjectId, ref: 'Creator', autopopulate: true }] })
     host: CreatorDocument;
     @Prop({ required: true, default: 0 })
