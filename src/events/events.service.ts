@@ -17,10 +17,15 @@ export class EventsService {
     }
 
     async createEvent(data: createEventDTO, creatorId: string): Promise<EventDocument> {
+      const userId =`${creatorId}`
+      console.log(creatorId)
+      const res = userId.toString()
       const event = await this.eventModel.create({
         ...data,
-        host: creatorId
+        host: res
       })
+
+      console.log(event)
 
       return event
     }

@@ -18,7 +18,7 @@ export type EventDocument = Event &
     @Prop({ required: true })
     title: string;
     @Prop({ required: true })
-    data: string;
+    date: string;
     @Prop({ required: true })
     time: string;
     @Prop({ required: true })
