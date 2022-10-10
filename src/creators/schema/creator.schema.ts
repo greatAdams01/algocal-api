@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
+import { Event } from 'src/events/schema/event.schema';
 
 // export type CreatorDocument =  & Document;
 export type CreatorDocument = Creator &
@@ -24,6 +25,8 @@ export class Creator {
   about: string;
   @Prop({ required: true, default: 'Fill in' })
   website: string;
+  @Prop({ type: Types.ObjectId, ref: 'Event', autopopulate: true })
+  followedEvents: Event[];
 }
 
 export const CreatorSchema = SchemaFactory.createForClass(Creator)

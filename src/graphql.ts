@@ -39,10 +39,12 @@ export abstract class IMutation {
 
 export class Creator {
     _id?: Nullable<string>;
+    image: string;
     name: string;
     email: string;
     about: string;
     website: string;
+    followedEvents: Event[];
 }
 
 export abstract class IQuery {
@@ -51,6 +53,10 @@ export abstract class IQuery {
     abstract creator(): Creator | Promise<Creator>;
 
     abstract events(): Event[] | Promise<Event[]>;
+
+    abstract event(eventId: string): Event | Promise<Event>;
+
+    abstract creatorEvents(): Event[] | Promise<Event[]>;
 }
 
 export class Event {

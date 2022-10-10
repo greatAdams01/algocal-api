@@ -5,6 +5,7 @@ type Creator {
   email: String!
   about: String!
   website: String!
+  followedEvents: [Event!]!
 }
 
 

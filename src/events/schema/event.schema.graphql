@@ -18,6 +18,8 @@ type Event {
 
 type Query {
   events: [Event!]!
+  event(eventId: String!): Event!
+  creatorEvents: [Event!]!
 }
 
 input EventInput {

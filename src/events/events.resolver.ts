@@ -13,6 +13,13 @@ export class EventsResolver {
     return this.eventsService.events()
   }
 
+  // Creator events
+  @UseGuards(GQLoginGuard)
+  @Query()
+  creatorEvents(@CurrentCreator() creator): Promise<EventDocument[]>  {
+    return this.eventsService.creatorEvent(creator._id)
+  }
+
   @UseGuards(GQLoginGuard)
   @Mutation()
   createEvent(@Args() payload, @CurrentCreator() creator) {

@@ -16,6 +16,15 @@ export class EventsService {
       return events
     }
 
+    async creatorEvent(creatorId: string): Promise<EventDocument[]> {
+      try {
+        const events = await this.eventModel.find({ host: creatorId })
+        return events
+      } catch (error) {
+        throw error
+      }
+    }
+
     async createEvent(data: createEventDTO, creatorId: string): Promise<EventDocument> {
       const userId =`${creatorId}`
       console.log(creatorId)
