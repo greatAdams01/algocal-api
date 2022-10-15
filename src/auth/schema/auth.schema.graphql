@@ -10,10 +10,8 @@ input CreatorInput {
   email: String!
 }
 
-
-
 type Mutation {
-  login(email: String!, password: String!): AuthData!
+  join(address: String!): AuthData!
   signup (
     name: String!
     password: String!

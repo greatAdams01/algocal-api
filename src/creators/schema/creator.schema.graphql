@@ -1,8 +1,7 @@
 type Creator {
   _id: ID
   image: String!
-  name: String!
-  email: String!
+  address: String!
   about: String!
   website: String!
   followedEvents: [Event!]!

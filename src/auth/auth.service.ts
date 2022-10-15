@@ -17,16 +17,13 @@ export class AuthService {
   ){}
 
 
-  async login(email:string, password: string): Promise<AuthData> {
+  async join(address): Promise<AuthData> {
 
-    const creator: CreatorDocument = await this.creatorModel.findOne({ email: email })
+    let creator: CreatorDocument = await this.creatorModel.findOne({ address: address })
     if (!creator) {
-      throw new AuthenticationError('Email or Password invaild')
-    }
-    const isPass = await comparePass(password, creator.password)
-
-    if (!isPass) {
-      throw new AuthenticationError('Email or Password invaild')
+      creator = await this.creatorModel.create(
+        {address}
+      )
     }
 
     const token = await this.jwtService.sign({ creatorId: creator._id })

@@ -30,7 +30,7 @@ export class AuthData {
 }
 
 export abstract class IMutation {
-    abstract login(email: string, password: string): AuthData | Promise<AuthData>;
+    abstract join(address: string): AuthData | Promise<AuthData>;
 
     abstract signup(name: string, password: string, email: string): Creator | Promise<Creator>;
 
@@ -40,8 +40,7 @@ export abstract class IMutation {
 export class Creator {
     _id?: Nullable<string>;
     image: string;
-    name: string;
-    email: string;
+    address: string;
     about: string;
     website: string;
     followedEvents: Event[];

@@ -7,8 +7,8 @@ export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
 
   @Mutation()
-  login(@Args() { email, password }) {
-    return this.authService.login(email, password)
+  join(@Args() { address }) {
+    return this.authService.join(address)
   }
 
   @Mutation()
