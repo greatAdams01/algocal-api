@@ -22,6 +22,12 @@ type Query {
   creatorEvents: [Event!]!
 }
 
+input Ifile {
+  file: String!
+	type: String!
+	name: String!
+}
+
 input EventInput {
   title: String!
   date: String!
@@ -40,5 +46,8 @@ type Mutation {
   description: String!
   venue: String!
   category: String!
+  imageName: String!
+  imageType: String!
+  imageFile: String!
   link: String!): Event!
 }

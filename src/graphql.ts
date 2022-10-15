@@ -14,6 +14,12 @@ export class CreatorInput {
     email: string;
 }
 
+export class Ifile {
+    file: string;
+    type: string;
+    name: string;
+}
+
 export class EventInput {
     title: string;
     date: string;
@@ -34,7 +40,7 @@ export abstract class IMutation {
 
     abstract signup(name: string, password: string, email: string): Creator | Promise<Creator>;
 
-    abstract createEvent(title: string, date: string, time: string, organizer: string, description: string, venue: string, category: string, link: string): Event | Promise<Event>;
+    abstract createEvent(title: string, date: string, time: string, organizer: string, description: string, venue: string, category: string, imageName: string, imageType: string, imageFile: string, link: string): Event | Promise<Event>;
 }
 
 export class Creator {

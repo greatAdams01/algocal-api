@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { cloudinaryUpload } from 'src/util/cloudinary';
 import { createEventDTO } from './schema/event.dto';
 import { Event, EventDocument } from './schema/event.schema';
 
@@ -25,12 +26,22 @@ export class EventsService {
       }
     }
 
+
     async createEvent(data: createEventDTO, creatorId: string): Promise<EventDocument> {
       const userId =`${creatorId}`
-      console.log(creatorId)
+      const payload = {
+        file: data.imageFile,
+        type: data.type,
+        name: data.imageName
+      }
+      const image = await cloudinaryUpload(payload.file).catch((err) => {
+        throw err;
+      });
+
       const res = userId.toString()
       const event = await this.eventModel.create({
         ...data,
+        image,
         host: res
       })
 
