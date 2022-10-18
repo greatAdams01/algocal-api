@@ -62,6 +62,8 @@ export abstract class IQuery {
     abstract event(eventId: string): Event | Promise<Event>;
 
     abstract creatorEvents(): Event[] | Promise<Event[]>;
+
+    abstract deleteEvent(eventId: string): Event | Promise<Event>;
 }
 
 export class Event {

@@ -19,7 +19,8 @@ import { AppService } from './app.service';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.mongoDB_URI),
-    CacheModule.register<ClientOpts>({
+    CacheModule.register({
+      isGlobal: true,
       store: redisStore,
       host: process.env.redis_URI,
       port: process.env.redis_PORT,
