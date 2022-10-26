@@ -20,7 +20,7 @@ export class EventsService {
         let cacheEvents: EventDocument[] = await this.cacheManager.get('events');
         let result;
         
-        const eventsList = await this.eventModel.find()
+        const eventsList = await this.eventModel.find().sort({ createdAt: -1 })
         if (!cacheEvents) {
         
           const check = await this.cacheManager.set('events', eventsList,  { ttl:80 });
@@ -45,10 +45,11 @@ export class EventsService {
       }
     }
 
-    async creatorEvent(creatorId: string): Promise<EventDocument[]> {
+    async creatorEvent(creator): Promise<EventDocument[]> {
       try {
-        const events = await this.eventModel.find({ host: creatorId })
-        return events
+        const events = await this.eventModel.find().sort({ createdAt: -1 })
+        const result = events.filter(event => event.host.toString() === creator._id.toString())
+        return result
       } catch (error) {
         throw error
       }

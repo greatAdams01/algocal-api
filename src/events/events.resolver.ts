@@ -35,7 +35,8 @@ export class EventsResolver {
   @UseGuards(GQLoginGuard)
   @Query()
   creatorEvents(@CurrentCreator() creator): Promise<EventDocument[]>  {
-    return this.eventsService.creatorEvent(creator._id)
+
+    return this.eventsService.creatorEvent(creator)
   }
 
   @UseGuards(GQLoginGuard)

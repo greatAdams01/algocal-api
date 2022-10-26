@@ -20,11 +20,7 @@ import { AppService } from './app.service';
     ConfigModule.forRoot({ isGlobal: true }),
     MongooseModule.forRoot(process.env.mongoDB_URI),
     CacheModule.register({
-      isGlobal: true,
-      store: redisStore,
-      host: process.env.redis_URI,
-      port: process.env.redis_PORT,
-      password: process.env.redis_PASSWORD
+      isGlobal: true
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
